@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header'
-import { Footer } from './components/Footer'
 import { CartProvider } from './context/cart'
 import { Home } from './pages/Home'
 import { ProductDetail } from './pages/ProductDetail'
@@ -18,7 +17,6 @@ function App () {
           <Route path='/cart' element={<CartPage />} />
         </Routes>
       </main>
-      <Footer />
     </CartProvider>
 
   )
