@@ -1,21 +1,23 @@
-import { useState } from 'react'
-import { products as initialProducts } from './mocks/products.json'
-import { Products } from './components/Products'
+import { Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header'
-import { useFilters } from './hooks/useFilters'
 import { Footer } from './components/Footer'
-import { Cart } from './components/Cart'
 import { CartProvider } from './context/cart'
+import { Home } from './pages/Home'
+import { ProductDetail } from './pages/ProductDetail'
+import { CartPage } from './pages/CartPage'
 
 function App () {
-  const [products] = useState(initialProducts)
-  const { filterProducts } = useFilters()
-  const filteredProducts = filterProducts(products)
   return (
+
     <CartProvider>
       <Header />
-      <Cart />
-      <Products products={filteredProducts} />
+      <main className='min-h-screen bg-white'>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/product/:id' element={<ProductDetail />} />
+          <Route path='/cart' element={<CartPage />} />
+        </Routes>
+      </main>
       <Footer />
     </CartProvider>
 
